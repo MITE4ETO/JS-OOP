@@ -1,8 +1,20 @@
-let obj = { value: 10};
-
-function increase(obj) {
-  obj.value++;
+function Circle(radius) {
+  this.radius = radius;
+  this.draw = function () {
+    console.log("draw");
+  };
 }
 
-increase(obj);
-console.log(obj);
+const circle = new Circle(10);
+
+// user.token = "dasdaeqw";
+
+circle.location = { x: 1};
+
+
+
+const properyName = "center location";
+circle[properyName] = { x: 1};
+
+delete circle.location;
+delete circle[location];
