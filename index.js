@@ -7,14 +7,12 @@ function Circle(radius) {
 
 const circle = new Circle(10);
 
-// user.token = "dasdaeqw";
+for (let key in circle) {
+  if (typeof circle[key] !== "function") console.log(key, circle[key]);
+}
 
-circle.location = { x: 1};
+const keys = Object.keys(circle);
+console.log(keys);
 
-
-
-const properyName = "center location";
-circle[properyName] = { x: 1};
-
-delete circle.location;
-delete circle[location];
+if("radius" in circle)
+console.log("Circle has a radius");
