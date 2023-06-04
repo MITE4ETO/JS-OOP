@@ -1,27 +1,26 @@
+// myObj.__proto__ (parent of myObj)
+// Constructor.prototype (parent of myObj )
+
 function Circle(radius) {
+    // Instance members
   this.radius = radius;
 
-  let defaultLocation = { x: 0, y: 0 };
+  this.move = function() {
+    this.draw();
+    console.log("move");
+  }
 
-  this.getDefaultLocation = function () {
-    return defaultLocation;
-  };
-  this.draw = function () {
-    console.log("draw");
-  };
-
-  Object.defineProperty(this, "defaultLocation", {
-    get: function () {
-      return defaultLocation;
-    },
-    set: function (value) {
-      if (!value.x || !value.y) throw new Error("Invalid location");
-
-      defaultLocation = value;
-    },
-  });
 }
 
-const circle = new Circle(10);
-circle.defaultLocation = 1;
-circle.draw();
+// Prototype members
+Circle.prototype.draw = function() {
+    
+    console.log("draw");
+}
+
+const c1 = new Circle(1);
+const c2 = new Circle(1);
+
+Circle.prototype.toString = function() {
+    return "Circle with radius " + this.radius;
+}
