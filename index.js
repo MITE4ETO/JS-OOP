@@ -1,12 +1,27 @@
 
 function Circle(radius) {
+  // Instance members
   this.radius = radius;
 
-  this.draw = function () {
-    console.log("draw");
-  };
+  this.move = function() {
+    this.draw();
+    console.log("move");
+  }
+
 }
 
-const circle = new Circle(10);
 
-// multi-level inheritence in the console
+// Prototype members
+Circle.prototype.draw = function() {
+  
+  console.log("draw");
+}
+
+const c1  = new Circle(1);
+const c2  = new Circle(1);
+
+
+// Modifying the toString method
+Circle.prototype.toString = function() {
+  return "Circle with radius " + this.radius; 
+}
