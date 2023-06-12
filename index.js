@@ -1,11 +1,17 @@
-"use strict";
+
+const _radius = Symbol();
+const _draw = Symbol();
 
 class Circle {
-    draw() {
-        console.log(this);
+    constructor(radius) {
+        this[_radius] = radius;
+    }
+
+    [_draw]() {
+
     }
 }
 
-const c = new Circle();
-const draw = c.draw;
-draw();
+const c = new Circle(1);
+
+
