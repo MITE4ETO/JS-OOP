@@ -1,42 +1,22 @@
 
-function HtmlElement() {
-  this.click = function () {
-    console.log("clicked");
-  };
+class Circle {
+    constructor(radius) {
+        this.radius = radius
+    }
+
+// Instance Method
+draw() {
 }
 
-HtmlElement.prototype.focus = function () {
-  console.log("focused");
-};
 
-function HtmlSelectElement(items = []) {
-  this.items = items;
-
-  this.addItem = function (item) {
-    this.items.push(item);
-  };
-
-  this.removeItem = function (item) {
-    this.items.splice(this.items.indexOf(item), 1);
-  };
-
-  this.render = function () {
-    return ` <select>
-    ${this.items.map((item) => `<option>${item}</option>`).join("")}
-    </select>`;
-  };
+// Static Method
+static parse(str) {
+const radius = JSON.parse(str).radius;
+return new Circle(radius)
+}
 }
 
-// baseHtmlSelectElement
-HtmlSelectElement.prototype = new HtmlElement();
-HtmlSelectElement.prototype.constructor = HtmlSelectElement;
+const circle = Circle.parse(`{"radius": 1 }`)
 
-function HtmlImageElement(src) {
-  this.src = src;
+console.log(circle);
 
-  this.render = function() {
-    return `<img src="${this.src}" />`
-  }
-}
-HtmlImageElement.prototype = new HtmlElement();
-HtmlImageElement.prototype.constructor = HtmlImageElement;
