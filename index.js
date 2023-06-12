@@ -1,17 +1,22 @@
+"use strict";
 
-const _radius = Symbol();
-const _draw = Symbol();
+const _radius = new WeakMap();
+const _move = new WeakMap();
 
 class Circle {
-    constructor(radius) {
-        this[_radius] = radius;
-    }
+  constructor(radius) {
+    _radius.set(this, radius);
 
-    [_draw]() {
+    _move.set(this, () => {
+      console.log("move", this);
+    });
+  }
 
-    }
+  draw() {
+    _move.get(this)();
+
+    console.log("draw");
+  }
 }
 
 const c = new Circle(1);
-
-
